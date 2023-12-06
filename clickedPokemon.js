@@ -1,5 +1,7 @@
+
+
 export default function getClickedPokemon(keepCount, pokeID, showPokeImg, childContainer,pokemonName, pokemonImages){
-    keepCount++
+    // keepCount++
     console.log(`click: pokemon #${pokeID}`)
     showPokeImg.src = pokemonImages.front_default;
 
@@ -9,6 +11,8 @@ export default function getClickedPokemon(keepCount, pokeID, showPokeImg, childC
     if(keepCount === 1){
         let showPokeName = document.createElement('p');
         showPokeName.innerText = pokemonName;
+
+        showPokeName.setAttribute('class', 'pokemonName')
 
         childContainer.append(showPokeName)
     }

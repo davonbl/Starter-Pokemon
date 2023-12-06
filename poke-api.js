@@ -10,14 +10,11 @@ const getPokemon = async() => {
         let pokemonName = await response.data.name;
         let pokemonImages = await response.data.sprites;
 
-        let keepCount = 0
+        let keepCount = 0; 
 
         let showPokeImg = document.createElement('img');
         showPokeImg.setAttribute('class', 'pokeball-img')
         showPokeImg.src = './images/pokeball.png'
-
-        // let showPokeName = document.createElement('p');
-        // showPokeName.innerText = pokemonName;
 
         let childContainer = document.createElement('div'); 
         childContainer.setAttribute('class', 'poke-component')
@@ -28,30 +25,13 @@ const getPokemon = async() => {
         let parentContainer = document.querySelector('#app')
         parentContainer.append(childContainer)
 
-        // console.log('testing: ', pokemonImages.front_default)
         pokemonNames.push({pokemonName, pokemonImages});
 
         let clickPokemon = document.querySelector(`#pokemon-id-${i}`);
         clickPokemon.addEventListener('click', () => {
+            keepCount++
             getClickedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
         }
-        
-        // () => {
-        //     keepCount++
-        //     console.log(`click: pokemon #${i}`)
-        //     showPokeImg.src = pokemonImages.front_default;
-
-        //     showPokeImg.classList.remove('pokeball-img');
-        //     showPokeImg.classList.add('pokemon-img')
-
-        //     if(keepCount === 1){
-        //         let showPokeName = document.createElement('p');
-        //         showPokeName.innerText = pokemonName;
-    
-        //         childContainer.append(showPokeName)
-        //     }
-
-        // }
         )
     }
     return pokemonNames
