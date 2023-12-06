@@ -10,12 +10,14 @@ const getPokemon = async() => {
         let pokemonImages = await response.data.sprites;
 
         let showPokeImg = document.createElement('img');
+        showPokeImg.setAttribute('class', 'poke-img')
         showPokeImg.src = pokemonImages.front_default;
 
         let showPokeName = document.createElement('p');
         showPokeName.innerText = pokemonName;
 
         let childContainer = document.createElement('div'); 
+        childContainer.setAttribute('class', 'poke-component')
 
         childContainer.append(showPokeImg, showPokeName);
 
