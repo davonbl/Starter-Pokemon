@@ -1,4 +1,5 @@
 import axios from "axios";
+import getClickedPokemon from "./clickedPokemon.js";
 //TKH-Gotta-Fetch-Em-All
 
 const getPokemon = async() => {
@@ -32,7 +33,7 @@ const getPokemon = async() => {
 
         let clickPokemon = document.querySelector(`#pokemon-id-${i}`);
         clickPokemon.addEventListener('click', () => {
-            testing(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
+            getClickedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
         }
         
         // () => {
@@ -57,22 +58,6 @@ const getPokemon = async() => {
 }
 
 
-function testing(keepCount, pokeID, showPokeImg, childContainer,pokemonName, pokemonImages){
-        keepCount++
-        console.log(`click: pokemon #${pokeID}`)
-        showPokeImg.src = pokemonImages.front_default;
 
-        showPokeImg.classList.remove('pokeball-img');
-        showPokeImg.classList.add('pokemon-img')
-
-        if(keepCount === 1){
-            let showPokeName = document.createElement('p');
-            showPokeName.innerText = pokemonName;
-
-            childContainer.append(showPokeName)
-        }
-
-    
-}
 
 export default getPokemon; 
