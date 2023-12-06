@@ -139,15 +139,23 @@ p{
   width: 31%;
 }
 
-.poke-img{
+.pokeball-img{
   display: block;
   margin: auto;
+  width: 79%;
+  padding-top: 21px;
 }
 
-img{
-  /* padding-left: 78px; */
-  margin-left: 21px;
+.pokemon-img{
+  display: block;
+  margin: auto;
+  width: 30%; 
 }
+
+/* img{
+  padding-left: 78px;
+  margin-left: 21px;
+} */
 
 img:hover{
   text-align: center;
