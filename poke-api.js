@@ -1,10 +1,10 @@
 import axios from "axios";
 import getClickedPokemon from "./clickedPokemon.js";
-//TKH-Gotta-Fetch-Em-All
+import {storedPokemon, displayPokemon} from "./savedPokemon.js";
 
 const getPokemon = async() => {
     let pokemonNames = [];
-    for(let i = 1; i <= 6; i++ ){
+    for(let i = 1; i <= 2; i++ ){
         const randomPokemon = Math.floor(Math.random() * 350)
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`)
         let pokemonName = await response.data.name;
@@ -31,11 +31,16 @@ const getPokemon = async() => {
         clickPokemon.addEventListener('click', () => {
             keepCount++
             getClickedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
+            storedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
         }
         )
+        displayPokemon(showPokeImg, childContainer, pokemonName)
     }
     return pokemonNames
 }
+
+
+
 
 
 
