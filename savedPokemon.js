@@ -34,9 +34,19 @@ export function storedPokemon(keepCount, i, showPokeImg, childContainer,
     console.log('testing childContainer', childContainer)
 }
 
+/*
 
-export function displayPokemon(showPokeImg, childContainer,pokemonName ){
+The reason for the amount of code is that I was dealing with very weird errors that made
+in diffcult to resolve within constrained time if I was consider the modular code route. 
+
+ex: passing in arguments within the displayPokemon function (ex:
+displayPokemon(showPokeImg, pokeID, childContainer,pokemonName ) )
+
+*/
+
+export async function displayPokemon(){
     if(localStorage.getItem('pokemonList')){
+        // debugger
         console.log('the stored pokemon is here')
 
         let parsePokemonList = JSON.parse(localStorage.getItem('pokemonList'))
@@ -45,18 +55,30 @@ export function displayPokemon(showPokeImg, childContainer,pokemonName ){
             return a['pokemon-id'] - b['pokemon-id']
         })
 
-        // for(let i = 1; i <= sortPokemonList.length; i++){
+        for(let i = 0; i < sortPokemonList.length; i++){
+            debugger
+            let testingImg = document.createElement("img")
+            testingImg.src = await sortPokemonList[i]['pokemon-image'].front_default
+            console.log
+            let addingClasses = [`pokemon-image-${i}`, 'pokemon-img']
+            testingImg.classList.add(...addingClasses)
 
-        // }
+
+            let showPokeName = document.createElement('p');
+            showPokeName.innerText = await sortPokemonList[i]['pokemon-name'];
+            showPokeName.setAttribute('class', 'pokemonName')
+
+            let childContainer = document.createElement('div'); 
+            childContainer.setAttribute('class', 'poke-component')
+            childContainer.setAttribute('id', `pokemon-id-${i}`)
+
+            childContainer.append(testingImg, showPokeName)
+            let parentContainer = document.querySelector('#app')
+            parentContainer.append(childContainer)
+        }
 
         localStorage.setItem('pokemonList', JSON.stringify(sortPokemonList))
-        console.log(sortPokemonList)
 
-
-        // showPokeImg.src = pokemonImages.front_default;
-
-        // showPokeImg.classList.remove('pokeball-img');
-        // showPokeImg.classList.add('pokemon-img')
     }else{
         console.log('no pokemon here')
     }
