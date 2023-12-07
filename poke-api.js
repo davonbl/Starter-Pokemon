@@ -1,9 +1,13 @@
 import axios from "axios";
 import getClickedPokemon from "./clickedPokemon.js";
 import {storedPokemon, displayPokemon} from "./savedPokemon.js";
+import { getTime } from "./timer.js";
 
 const getPokemon = async() => {
     let pokemonNames = [];
+
+
+
     if(!localStorage.getItem('pokemonList')){
         for(let i = 1; i <= 6; i++ ){
             const randomPokemon = Math.floor(Math.random() * 350)
@@ -29,8 +33,17 @@ const getPokemon = async() => {
             pokemonNames.push({pokemonName, pokemonImages});
     
             let clickPokemon = document.querySelector(`#pokemon-id-${i}`);
-            clickPokemon.addEventListener('click', () => {
+            clickPokemon.addEventListener('click', (e) => {
                 keepCount++
+                console.log(e)
+                console.log(e.pointerType)
+                console.log(e.type)
+                if(e.pointerType && e.type && keepCount > 1){
+                    console.log('this works')
+                    console.log('keeping count: ', keepCount)
+                    return
+                }
+
                 getClickedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
                 storedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
             }

@@ -55,7 +55,7 @@ export function getTime(){
     let amOrPm = getAmorPm();
 
     let time = `${hr}:${min}:${sec} ${amOrPm}`
-    console.log(time)
+    // console.log(time)
     
     return time;
 }
