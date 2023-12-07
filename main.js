@@ -1,17 +1,20 @@
 import getPokemon from "./poke-api";
 import { getTime } from "./timer";
 
-const test = await getPokemon()
+let test = await getPokemon()
 
 
-console.log(test)
+// console.log(test)
 
-let testing = getTime()
 
 setInterval(() => {
-  // getTime()
-  // console.log(typeof testing)
-  if(getTime() == '7:40:00 PM'){
+  getTime()
+  let removeChildren = document.querySelector('#app')
+  if(getTime() == '10:03:00 PM'){
     localStorage.clear()
+    while (removeChildren.hasChildNodes()) {
+      removeChildren.removeChild(removeChildren.firstChild);
+    }
+    test = getPokemon()
   }
 }, 1000)
