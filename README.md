@@ -5,7 +5,7 @@ Tools needed: Visual Studio Code (VSC) Editor (recommended), git bash (recommend
 browse around the application within your VSC editor. 
 
 2. In the git bash terminal, and assuming you are on the right path,
-type 'npm i' to ensure that are you downloading the necessary node modules needed.
+type 'npm i' or 'npm install' to ensure that are you downloading the necessary node modules needed.
 
 3. In the git bash terminal, type the command "npm run dev". This will run the
 vite server. Copy the url link and paste it on your browser.
