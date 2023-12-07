@@ -31,7 +31,7 @@ export function storedPokemon(keepCount, i, showPokeImg, childContainer,
     }
 
 
-    console.log('testing childContainer', childContainer)
+    // console.log('testing childContainer', childContainer)
 }
 
 /*
@@ -47,7 +47,7 @@ displayPokemon(showPokeImg, pokeID, childContainer,pokemonName ) )
 export async function displayPokemon(){
     if(localStorage.getItem('pokemonList')){
         // debugger
-        console.log('the stored pokemon is here')
+        // console.log('the stored pokemon is here')
 
         let parsePokemonList = JSON.parse(localStorage.getItem('pokemonList'))
 
@@ -80,6 +80,6 @@ export async function displayPokemon(){
         localStorage.setItem('pokemonList', JSON.stringify(sortPokemonList))
 
     }else{
-        console.log('no pokemon here')
+        // console.log('no pokemon here')
     }
 }

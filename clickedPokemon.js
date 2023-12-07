@@ -1,7 +1,7 @@
 
 
 export default function getClickedPokemon(keepCount, pokeID, showPokeImg, childContainer,pokemonName, pokemonImages){
-    console.log(`click: pokemon #${pokeID}`)
+    // console.log(`click: pokemon #${pokeID}`)
     showPokeImg.src = pokemonImages.front_default;
 
     showPokeImg.classList.remove('pokeball-img');

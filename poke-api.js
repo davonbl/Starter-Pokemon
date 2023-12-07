@@ -11,7 +11,7 @@ const getPokemon = async() => {
     // console.log(pokemonLength)
 
     let pokemonID = JSON.parse(localStorage.getItem('pokemonList'));
-    console.log(pokemonID)
+    // console.log(pokemonID)
 
 
 
@@ -79,12 +79,12 @@ const getPokemon = async() => {
             let clickPokemon = document.querySelector(`#pokemon-id-${i}`);
             clickPokemon.addEventListener('click', (e) => {
                 keepCount++
-                console.log(e)
-                console.log(e.pointerType)
-                console.log(e.type)
+                // console.log(e)
+                // console.log(e.pointerType)
+                // console.log(e.type)
                 if(e.pointerType && e.type && keepCount > 1){
-                    console.log('this works')
-                    console.log('keeping count: ', keepCount)
+                    // console.log('this works')
+                    // console.log('keeping count: ', keepCount)
                     return
                 }
 

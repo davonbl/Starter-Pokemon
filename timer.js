@@ -1,3 +1,14 @@
+export function getDate(){
+    const date = new Date();
+    const day = date.getDate();
+    const grabdate = date.getDay()
+    // console.log(date); 
+    // console.log(day)
+
+    return {grabdate, day}; 
+}
+
+
 function getHours(){
     const date = new Date();
     let hours = date.getHours();

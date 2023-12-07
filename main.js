@@ -1,5 +1,5 @@
 import getPokemon from "./poke-api";
-import { getTime } from "./timer";
+import { getTime, getDate } from "./timer.js";
 
 let test = await getPokemon()
 
@@ -10,8 +10,16 @@ let test = await getPokemon()
 setInterval(() => {
   getTime()
   let removeChildren = document.querySelector('#app')
-  if(getTime() == '10:03:00 PM'){
+  let testing = getDate()
+  let newDate = new Date()
+  let day = newDate.getDate()
+  // console.log('day', testing.grabdate)
+  // console.log('date', testing.day)
+  // console.log('compare day', day)
+  if(getTime() == '12:00:00 AM'){
     localStorage.clear()
+    console.log(testing.date)
+    console.log(testing.day)
     while (removeChildren.hasChildNodes()) {
       removeChildren.removeChild(removeChildren.firstChild);
     }
