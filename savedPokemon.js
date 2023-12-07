@@ -56,7 +56,7 @@ export async function displayPokemon(){
         })
 
         for(let i = 0; i < sortPokemonList.length; i++){
-            debugger
+            // debugger
             let testingImg = document.createElement("img")
             testingImg.src = await sortPokemonList[i]['pokemon-image'].front_default
             console.log

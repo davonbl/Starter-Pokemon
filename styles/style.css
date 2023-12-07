@@ -127,6 +127,10 @@ p{
   text-align: center;
 }
 
+.pokemonName{
+  font-size: 16px; 
+}
+
 .poke-component{
   display: inline-block;
   background-color: white;

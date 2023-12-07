@@ -5,7 +5,7 @@ import {storedPokemon, displayPokemon} from "./savedPokemon.js";
 const getPokemon = async() => {
     let pokemonNames = [];
     if(!localStorage.getItem('pokemonList')){
-        for(let i = 1; i <= 10; i++ ){
+        for(let i = 1; i <= 6; i++ ){
             const randomPokemon = Math.floor(Math.random() * 350)
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`)
             let pokemonName = await response.data.name;
