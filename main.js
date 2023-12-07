@@ -16,7 +16,7 @@ setInterval(() => {
   // console.log('day', testing.grabdate)
   // console.log('date', testing.day)
   // console.log('compare day', day)
-  if(getTime() == '12:00:00 AM'){
+  if(getTime() == '12:00:00 AM' || getTime() === '0:00:00 AM'){
     localStorage.clear()
     console.log(testing.date)
     console.log(testing.day)
