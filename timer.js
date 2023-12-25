@@ -59,6 +59,15 @@ function getAmorPm(){
 
 }
 
+function getDay(){
+    const date = new Date()
+    let savedDate = date.getDate()
+ 
+    return savedDate
+}
+
+
+
 export function getTime(){
     let hr = getHours();
     let min = getMintues();
@@ -67,6 +76,12 @@ export function getTime(){
 
     let time = `${hr}:${min}:${sec} ${amOrPm}`
     // console.log(time)
+
+    let storeDate = getDay(); 
+
+    if(!localStorage.getItem('storeDate')){
+        localStorage.setItem('storeDate', storeDate)
+    }
     
     return time;
 }
