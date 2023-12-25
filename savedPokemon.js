@@ -44,7 +44,7 @@ displayPokemon(showPokeImg, pokeID, childContainer,pokemonName ) )
 
 */
 
-export async function displayPokemon(){
+export async function displayAllPokemon(){
     if(localStorage.getItem('pokemonList')){
         // debugger
         // console.log('the stored pokemon is here')
@@ -86,41 +86,34 @@ export async function displayPokemon(){
 
 
 
-export async function testingPokemon(testingPokemonNum){
-    if(localStorage.getItem('pokemonList')){
-        // debugger
-        // console.log('the stored pokemon is here')
+export async function displayedClickedPokemon(pokeIDIndexNumber){
 
-        let parsePokemonList = JSON.parse(localStorage.getItem('pokemonList'))
+    let parsePokemonList = JSON.parse(localStorage.getItem('pokemonList'))
 
-        let sortPokemonList = parsePokemonList.sort((a,b) => {
-            return a['pokemon-id'] - b['pokemon-id']
-        })
-
-            // debugger
-            let testingImg = document.createElement("img")
-            testingImg.src = await sortPokemonList[testingPokemonNum]['pokemon-image'].front_default
-            // console.log
-            let addingClasses = [`pokemon-image-${testingPokemonNum}`, 'pokemon-img']
-            testingImg.classList.add(...addingClasses)
+    let sortPokemonList = parsePokemonList.sort((a,b) => {
+        return a['pokemon-id'] - b['pokemon-id']
+    })
 
 
-            let showPokeName = document.createElement('p');
-            showPokeName.innerText = await sortPokemonList[testingPokemonNum]['pokemon-name'];
-            showPokeName.setAttribute('class', 'pokemonName')
+    let testingImg = document.createElement("img")
+    testingImg.src = await sortPokemonList[pokeIDIndexNumber]['pokemon-image'].front_default
 
-            let childContainer = document.createElement('div'); 
-            childContainer.setAttribute('class', 'poke-component')
-            childContainer.setAttribute('id', `pokemon-id-${testingPokemonNum}`)
+    let addingClasses = [`pokemon-image-${pokeIDIndexNumber}`, 'pokemon-img']
+    testingImg.classList.add(...addingClasses)
 
-            childContainer.append(testingImg, showPokeName)
-            let parentContainer = document.querySelector('#app')
-            parentContainer.append(childContainer)
+
+    let showPokeName = document.createElement('p');
+    showPokeName.innerText = await sortPokemonList[pokeIDIndexNumber]['pokemon-name'];
+    showPokeName.setAttribute('class', 'pokemonName')
+
+    let childContainer = document.createElement('div'); 
+    childContainer.setAttribute('class', 'poke-component')
+    childContainer.setAttribute('id', `pokemon-id-${pokeIDIndexNumber}`)
+
+    childContainer.append(testingImg, showPokeName)
+    let parentContainer = document.querySelector('#app')
+    parentContainer.append(childContainer)
         
+    localStorage.setItem('pokemonList', JSON.stringify(sortPokemonList))
 
-        localStorage.setItem('pokemonList', JSON.stringify(sortPokemonList))
-
-    }else{
-        // console.log('no pokemon here')
     }
-}

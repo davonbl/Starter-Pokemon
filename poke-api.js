@@ -1,77 +1,50 @@
 import axios from "axios";
 import getClickedPokemon from "./clickedPokemon.js";
-import {storedPokemon, displayPokemon, testingPokemon} from "./savedPokemon.js";
-import { getTime } from "./timer.js";
+import {storedPokemon, displayAllPokemon, displayedClickedPokemon} from "./savedPokemon.js";
+// import { getTime } from "./timer.js";
 
 const getPokemon = async() => {
+
     let pokemonNames = [];
+    let numOfClicks = 0; 
 
-    // let pokemonLength = localStorage.getItem('pokemonList')? JSON.parse(localStorage.getItem('pokemonList')).length
-    // : null
-    // console.log(pokemonLength)
+    if(!localStorage.getItem('numOfClicks')){
+        localStorage.setItem('numOfClicks', numOfClicks)
+    }else{
+        numOfClicks = JSON.parse(localStorage.getItem('numOfClicks'));
+    }
 
-    let pokemonID = JSON.parse(localStorage.getItem('pokemonList'));
+    let getPokeID;
 
-    let getPokeID = pokemonID.map((item) => {
-        return item['pokemon-id']
-    })
-    console.log('getPokeID', getPokeID)
-    // console.log(pokemonID)
+    if(localStorage.getItem('pokemonList')){
+        let pokemonID = JSON.parse(localStorage.getItem('pokemonList'));
+
+        getPokeID = pokemonID.map((item) => {
+            return item['pokemon-id']
+      
+        })
+        // console.log('getPokeID', getPokeID)
+    }else{
+        getPokeID = []
+    }
+
+    if(numOfClicks === 6){
+        // console.log('it works');
+        displayAllPokemon()
+
+    }else{
+
+        // console.log('else statement')
+
+        for(let i = 1; i <= 6; i++ ){
 
 
+            // let localStorageArrNum = i - 1
 
-    // console.log(pokemonID[0]['pokemon-id'])
-    // console.log(!localStorage.getItem('pokemonList'))
-    // console.log(typeof pokemonLength !== 'number')
-    // console.log(pokemonLength < 6)
-    // || (typeof pokemonLength !== 'number' || pokemonLength < 6)
-
-    // debugger
-    // if(!localStorage.getItem('pokemonList')){
-
-    // }
-
-
-        for(let i = 1; i <= 12; i++ ){
-
-            let localStorageArrNum = i - 1
-            let testingPokemonNum = i
-
-            let parseOutPokemon = i - 1
             let getPokeStorageIndex;
             // debugger
-            console.log('keeping track of the i num: ', i)
-            console.log('localStorageArrNum:', localStorageArrNum)
-
-            //when the pokemon is shown; the error is that the pokemon object is not present, so I have to test it out 
-            // console.log('tracking number', pokemonID[localStorageArrNum]['pokemon-id'], 'and i number: ', i)
-
-            // console.log(pokemonID.includes(pokemonID[0]['pokemon-id']))
-
-
-            // let getTrue;
-
-            // let convertToArr = Object.entries(pokemonID)
-            // console.log(convertToArr)
-            // let hardCodedArr = Object.entries(convertToArr[0][1])
-            // console.log(convertToArr[localStorageArrNum][i])
-            // console.log(hardCodedArr)
-
-            // console.log(convertToArr.includes(convertToArr[localStorageArrNum][i]))
-
-            // if(typeof pokemonID[localStorageArrNum]['pokemon-id'] === undefined || pokemonID[localStorageArrNum]['pokemon-id'] === undefined){
-            //     getTrue = false; 
-            // }else {
-            //     getTrue = pokemonID[localStorageArrNum]['pokemon-id'] !== undefined && pokemonID[localStorageArrNum]['pokemon-id']  === i? true : false
-            // }
-
-            // console.log(getTrue)
-        
-        // if(getTrue){
-        //     if(localStorage.getItem('pokemonList') !== null && pokemonID[localStorageArrNum]['pokemon-id'] === i){
-        //         continue; 
-        //     }
-        // }
+            // console.log('keeping track of the i num: ', i)
+            // console.log('localStorageArrNum:', localStorageArrNum)
 
 
             const randomPokemon = Math.floor(Math.random() * 350)
@@ -81,69 +54,21 @@ const getPokemon = async() => {
 
 
 
-            const pokemonShow = await response.data
-            console.log(pokemonShow)
+            // const pokemonShow = await response.data
+            // console.log(pokemonShow)
 
 
-            // when the pokemon is shown; the error is that the pokemon object is not present, so I have to test it out 
-            // debugger
-            // this can be deleted
-            // console.log('tracking number', pokemonID[localStorageArrNum]['pokemon-id'], 'and i number: ', i)
-            console.log(getPokeID.includes(i))
-            // console.log('for the bottom: ', pokemonID[localStorageArrNum]['pokemon-id']); 
-            // console.log('getPokeIndex: ', getPokeID.indexOf(pokemonID[localStorageArrNum]['pokemon-id']))
-
-            // This can be deleted 
-
-            // console.log(pokemonID.includes(pokemonID[0]['pokemon-id']))
-
-
-            let getTrue;
-
-            // This can be deleted
-
-            // let convertToArr = Object.entries(pokemonID)
-            // console.log(convertToArr)
-            // let hardCodedArr = Object.entries(convertToArr[0][1])
-            // console.log(convertToArr[localStorageArrNum][i])
-            // console.log(hardCodedArr)
-
-            // console.log(convertToArr.includes(convertToArr[localStorageArrNum][i]))
-
-            // this can be deleted 
-            // if(typeof pokemonID[localStorageArrNum]['pokemon-id'] === undefined){
-            //     getTrue = false; 
-            // }else {
-            //     getTrue = pokemonID[localStorageArrNum]['pokemon-id'] !== undefined && pokemonID[localStorageArrNum]['pokemon-id']  === i? true : false
-
-            // }
-
-            // delete this 
-            // console.log(getTrue)
-        
-            // if(getTrue){
-            //     getPokeStorageIndex = getPokeID.indexOf(pokemonID[localStorageArrNum]['pokemon-id'])
-            //     if(localStorage.getItem('pokemonList') !== null && pokemonID[localStorageArrNum]['pokemon-id'] === i){
-            //         testingPokemon(getPokeStorageIndex)
-            //         continue; 
-            //     }
-            // }
+            // console.log(getPokeID.includes(i))
 
 
             if(getPokeID.includes(i)){
                 getPokeStorageIndex = getPokeID.indexOf(i)
-                console.log('testing if: ', getPokeStorageIndex)
+                // console.log('testing if: ', getPokeStorageIndex)
                 if(localStorage.getItem('pokemonList') !== null){
-                    testingPokemon(getPokeStorageIndex)
+                    displayedClickedPokemon(getPokeStorageIndex)
                     continue; 
                 }
             }
-
-
-
-
-
-
 
 
             let pokemonName = await response.data.name;
@@ -169,12 +94,18 @@ const getPokemon = async() => {
             let clickPokemon = document.querySelector(`#pokemon-id-${i}`);
             clickPokemon.addEventListener('click', (e) => {
                 keepCount++
-                // console.log(e)
-                // console.log(e.pointerType)
-                // console.log(e.type)
+                numOfClicks++
+                // console.log(numOfClicks)
+
+                let addClick = JSON.parse(localStorage.getItem('numOfClicks'))
+                addClick = numOfClicks
+                console.log(addClick)
+                localStorage.setItem('numOfClicks', JSON.stringify(addClick))
+
+
+
+
                 if(e.pointerType && e.type && keepCount > 1){
-                    // console.log('this works')
-                    // console.log('keeping count: ', keepCount)
                     return
                 }
 
@@ -182,15 +113,9 @@ const getPokemon = async() => {
                 storedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
             }
             ) 
-            // displayPokemon()
         }
+    }
 
-
-
-
-    // displayPokemon()
-
-    
     return pokemonNames
 }
 
