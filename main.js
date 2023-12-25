@@ -1,10 +1,10 @@
-import getPokemon from "./poke-api";
+import getPokemon from "./poke-api.js";
 import { getTime, getDate } from "./timer.js";
 
 let test = await getPokemon()
 
 
-// console.log(test)
+console.log(test)
 
 
 setInterval(() => {

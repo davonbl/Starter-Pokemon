@@ -83,3 +83,44 @@ export async function displayPokemon(){
         // console.log('no pokemon here')
     }
 }
+
+
+
+export async function testingPokemon(testingPokemonNum){
+    if(localStorage.getItem('pokemonList')){
+        // debugger
+        // console.log('the stored pokemon is here')
+
+        let parsePokemonList = JSON.parse(localStorage.getItem('pokemonList'))
+
+        let sortPokemonList = parsePokemonList.sort((a,b) => {
+            return a['pokemon-id'] - b['pokemon-id']
+        })
+
+            // debugger
+            let testingImg = document.createElement("img")
+            testingImg.src = await sortPokemonList[testingPokemonNum]['pokemon-image'].front_default
+            // console.log
+            let addingClasses = [`pokemon-image-${testingPokemonNum}`, 'pokemon-img']
+            testingImg.classList.add(...addingClasses)
+
+
+            let showPokeName = document.createElement('p');
+            showPokeName.innerText = await sortPokemonList[testingPokemonNum]['pokemon-name'];
+            showPokeName.setAttribute('class', 'pokemonName')
+
+            let childContainer = document.createElement('div'); 
+            childContainer.setAttribute('class', 'poke-component')
+            childContainer.setAttribute('id', `pokemon-id-${testingPokemonNum}`)
+
+            childContainer.append(testingImg, showPokeName)
+            let parentContainer = document.querySelector('#app')
+            parentContainer.append(childContainer)
+        
+
+        localStorage.setItem('pokemonList', JSON.stringify(sortPokemonList))
+
+    }else{
+        // console.log('no pokemon here')
+    }
+}
