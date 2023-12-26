@@ -7,6 +7,8 @@ const getPokemon = async() => {
 
     let pokemonNames = [];
     let numOfClicks = 0; 
+    // let oneClick = 0;
+    let arrOfPokemonClicked = []
 
     if(!localStorage.getItem('numOfClicks')){
         localStorage.setItem('numOfClicks', numOfClicks)
@@ -28,7 +30,7 @@ const getPokemon = async() => {
         getPokeID = []
     }
 
-    if(numOfClicks === 6){
+    if(numOfClicks >= 6){
         // console.log('it works');
         displayAllPokemon()
 
@@ -94,15 +96,26 @@ const getPokemon = async() => {
             let clickPokemon = document.querySelector(`#pokemon-id-${i}`);
             clickPokemon.addEventListener('click', (e) => {
                 keepCount++
-                numOfClicks++
-                // console.log(numOfClicks)
-
+                // console.log('numOfClicks: ', numOfClicks)
                 let addClick = JSON.parse(localStorage.getItem('numOfClicks'))
-                addClick = numOfClicks
-                console.log(addClick)
+                
+                console.log('pokemonName: ', pokemonName)
+
+                if(!arrOfPokemonClicked.includes(pokemonName)){
+                    arrOfPokemonClicked.push(pokemonName)
+                    numOfClicks++
+                    addClick = numOfClicks;
+                }else{
+                    console.log('can\'t add number')
+                }
+                // oneClick++ 
+                // console.log('oneClick: ', oneClick)
+                // if(oneClick === 1){
+                //     addClick = addClick + oneClick
+                //     console.log('addClick: ', addClick)
+                // }
+
                 localStorage.setItem('numOfClicks', JSON.stringify(addClick))
-
-
 
 
                 if(e.pointerType && e.type && keepCount > 1){

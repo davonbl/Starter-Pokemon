@@ -59,9 +59,10 @@ function getAmorPm(){
 
 }
 
-function getDay(){
+export function getDay(){
     const date = new Date()
     let savedDate = date.getDate()
+    // console.log(savedDate)
  
     return savedDate
 }
