@@ -56,8 +56,9 @@ const getPokemon = async() => {
 
 
 
-            // const pokemonShow = await response.data
-            // console.log(pokemonShow)
+            const pokemonShow = await response.data
+            console.log(pokemonShow)
+            console.log(pokemonShow.id)
 
 
             // console.log(getPokeID.includes(i))
@@ -119,6 +120,11 @@ const getPokemon = async() => {
 
 
                 if(e.pointerType && e.type && keepCount > 1){
+                    console.log('the root url: ', window.location.href)
+                    console.log(`pokemon id: pokemon-id-${i}`)
+                    let rootURL = window.location.href
+                    console.log('what is e', e)
+                    window.location.href = `${rootURL}/pokemonDetailsUI.html?pokemon-id=${i}`
                     return
                 }
 
