@@ -60,6 +60,8 @@ const getPokemon = async() => {
             console.log(pokemonShow)
             console.log(pokemonShow.id)
 
+            const pokedexID = pokemonShow.id
+
 
             // console.log(getPokeID.includes(i))
 
@@ -124,12 +126,12 @@ const getPokemon = async() => {
                     console.log(`pokemon id: pokemon-id-${i}`)
                     let rootURL = window.location.href
                     console.log('what is e', e)
-                    window.location.href = `${rootURL}/pokemonDetailsUI.html?pokemon-id=${i}`
+                    window.location.href = `${rootURL}pokemonDetailsUI.html?pokemon-id=${i}`
                     return
                 }
 
                 getClickedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
-                storedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages)
+                storedPokemon(keepCount, i, showPokeImg, childContainer, pokemonName, pokemonImages, pokedexID)
             }
             ) 
         }

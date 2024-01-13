@@ -1,15 +1,17 @@
 
 
 export function storedPokemon(keepCount, i, showPokeImg, childContainer, 
-    pokemonName, pokemonImages){
+    pokemonName, pokemonImages, pokedexID){
         // console.log(keepCount)
         // debugger
     if(!localStorage.getItem('pokemonList')){
         let pokemonList = []
         let pokemonObj = {
             'pokemon-id': i,
+            'pokedex-id': pokedexID,
             'pokemon-name': pokemonName,
             'pokemon-image': pokemonImages
+            
         }
         pokemonList.push(pokemonObj)
 
@@ -18,6 +20,7 @@ export function storedPokemon(keepCount, i, showPokeImg, childContainer,
         let getPokemonList = JSON.parse(localStorage.getItem('pokemonList'))
         let pokemonObj = {
             'pokemon-id': i,
+            'pokedex-id': pokedexID,
             'pokemon-name': pokemonName,
             'pokemon-image': pokemonImages
         }
